@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assets/CSS/style.css">
+    <link rel="shortcut icon" href="Assets/imagens/favicon.ico" type="image/x-icon">
+    <title>jogo da Velha</title>
+</head>
+
+<body>
+    <!-- Página principal -->
+    <section class="main-page esconder">
+
+        <div class="main-page-titulo">
+            <h1>Jogo da Velha de Cria</h1>
+        </div>
+
+        <div class="escolher-rodadas">
+            <h2>Escolha a quantidade de rodadas:</h2>
+            <div class="escolher-rodadas-opções">
+                <button onclick="melhorDe3()">Melhor de 3</button>
+                <button onclick="melhorDe5()">Melhor de 5</button>
+                <button onclick="melhorDe10()">Melhor de 10</button>
+            </div>
+            <p>Uma partida com <span id="quantidadeRodadas">três</span> rodadas</p>
+        </div>
+
+        <div class="escolher-dificuldade">
+            <h2>Escolha a dificuldade:</h2>
+            <div class="escolher-dificuldade-opções">
+                <button onclick="dificuldaeFacil()">Fácil</button>
+                <button onclick="dificuldaeMedio()">Médio</button>
+                <button onclick="dificuldaeDificil()">Difícil</button>
+            </div>
+            <p>O tempo para cada jogador jogar vai ser de <span id="quantidadeTempo">30s</span></p>
+        </div>
+
+        
+
+    </section>
+
+    <section class="jogo-page">
+
+        <div class="jogo-page-titulo">
+            <h2>Vez de <span id="jogadorAtual"></span> jogar</h2>
+        </div>
+
+        <div class="tempo">
+            <h3>Tempo restamte: <span id="tempoRestante"></span></h3>
+        </div>
+
+        <div class="placar">
+            <h3>Quantidade de vitorias</h3>
+            <p>X: <span id="vitoriasX"></span></p>
+            <p>O: <span id="vitoriasO"></span></p>
+        </div>
+
+        <div class="botão-jogar">
+            <button onclick="jogar()">Jogar</button>
+        </div>
+
+        <div class="tabuleiro">
+
+            <div>
+                <div id="1" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                <div id="2" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                <div id="3" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+            </div>
+
+            <div>
+                <div id="4" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                <div id="5" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                <div id="6" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+            </div>
+
+            <div>
+                <div id="7" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                <div id="8" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                <div id="9" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- link JS -->
+    <script src="Script/script.js"></script>
+</body>
+
+</html>
