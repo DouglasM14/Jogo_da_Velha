@@ -12,7 +12,7 @@
 
 <body>
     <!-- Página principal -->
-    <section class="main-page esconder">
+    <section id="menu" class="main-page">
 
         <div class="main-page-titulo">
             <h1>Jogo da Velha de Cria</h1>
@@ -21,11 +21,10 @@
         <div class="escolher-rodadas">
             <h2>Escolha a quantidade de rodadas:</h2>
             <div class="escolher-rodadas-opções">
-                <button onclick="melhorDe3()">Melhor de 3</button>
-                <button onclick="melhorDe5()">Melhor de 5</button>
-                <button onclick="melhorDe10()">Melhor de 10</button>
+                <button id="melhor3" class="ativo" onclick="melhorDe3()">Melhor de 3</button>
+                <button id="melhor5" onclick="melhorDe5()">Melhor de 5</button>
+                <button id="melhor9" onclick="melhorDe9()">Melhor de 9</button>
             </div>
-            <p>Uma partida com <span id="quantidadeRodadas">três</span> rodadas</p>
         </div>
 
         <div class="escolher-dificuldade">
@@ -35,14 +34,16 @@
                 <button onclick="dificuldaeMedio()">Médio</button>
                 <button onclick="dificuldaeDificil()">Difícil</button>
             </div>
-            <p>O tempo para cada jogador jogar vai ser de <span id="quantidadeTempo">30s</span></p>
+            <p>O tempo para cada jogador jogar vai ser de <span id="quantidadeTempo"></span></p>
         </div>
 
-        
+        <div class="botão-jogar">
+            <button onclick="jogar()">Jogar</button>
+        </div>
 
     </section>
 
-    <section class="jogo-page">
+    <section id="jogo" class="jogo-page esconder">
 
         <div class="jogo-page-titulo">
             <h2>Vez de <span id="jogadorAtual"></span> jogar</h2>
@@ -53,13 +54,10 @@
         </div>
 
         <div class="placar">
+            <h2>Rodada <span id="textoRodadaAtual">1</span></h2>
             <h3>Quantidade de vitorias</h3>
             <p>X: <span id="vitoriasX"></span></p>
             <p>O: <span id="vitoriasO"></span></p>
-        </div>
-
-        <div class="botão-jogar">
-            <button onclick="jogar()">Jogar</button>
         </div>
 
         <div class="tabuleiro">

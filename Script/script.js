@@ -1,9 +1,18 @@
 var jogador = null;
 var existeGanhador = false
+var existeGanhadorRodada = false
+var rodadaAtual = 1
+var quantidadeDeRodadas = 0
 var vitoriasX = 0
 var vitoriasO = 0
 
 function jogar() {
+    document.getElementById("menu").classList.add("esconder")
+    document.getElementById("jogo").classList.remove("esconder")
+
+    quantidadeRodadasEscolhido()
+
+
     escolherJogador();
     mudaJogadorAtual();
 }
@@ -13,12 +22,9 @@ function escolherJogador() {
     let numAleatorio = Math.floor(Math.random() * 2);
     if ((numAleatorio) == 0) {
         jogador = "X";
-        console.log(jogador);
     } else {
         jogador = "O";
-        console.log(jogador);
     }
-
     return jogador
 }
 
@@ -30,7 +36,7 @@ function mudaJogadorAtual() {
 // Muda o quadrado pra X ou O
 function quadradoEscolhido(id) {
     // verifica se alguem já ganhou
-    if (existeGanhador == true) {
+    if (existeGanhador == true || existeGanhadorRodada == true) {
         return
     }
 
@@ -73,7 +79,7 @@ function checarVitorias() {
     var q9 = document.getElementById("9")
 
 
-    // Veridica a vitoria por linha
+    //                      Verifica a vitoria por linha
     if (checarSequencia(q1, q2, q3)) {
         mudarCor(q1, q2, q3)
         decidirVencedor(q1)
@@ -92,7 +98,7 @@ function checarVitorias() {
         existeGanhador = true
     }
 
-    // Veridica a vitoria por Coluna
+    //                      Veridica a vitoria por Coluna
     if (checarSequencia(q1, q4, q7)) {
         mudarCor(q1, q4, q7)
         decidirVencedor(q1)
@@ -111,7 +117,7 @@ function checarVitorias() {
         existeGanhador = true
     }
 
-    // Veridica a vitoria por Diagonal
+    //                       Veridica a vitoria por Diagonal
     if (checarSequencia(q1, q5, q9)) {
         mudarCor(q1, q5, q9)
         decidirVencedor(q1)
@@ -143,7 +149,7 @@ function checarEmpate() {
         setTimeout(() => {
             alert("Deu empate")
         }, "300");
-        
+
     }
 }
 
@@ -161,27 +167,60 @@ function mudarCor(x, y, z) {
     z.style.backgroundColor = '#0F0'
 }
 
-// Decide o vencedor e muda o placar
+// Decide o vencedor da partida atual e muda o placar
 function decidirVencedor(q) {
     let vencedor = q.innerHTML
 
     if (vencedor === "X") {
         vitoriasX++
+        rodadaAtual++
         document.getElementById("vitoriasX").innerHTML = vitoriasX
+
+    } else {
+        vitoriasO++
+        rodadaAtual++    
+        document.getElementById("vitoriasO").innerHTML = vitoriasO
+    }
+
+    verificaPlacar()
+
+    setTimeout(() => {
+        document.getElementById("textoRodadaAtual").innerHTML = rodadaAtual
+        limpaTabuleiro()
+    }, "1500");
+}
+
+// Decide o vencedor da rodada e finaliza o jogo
+function verificaPlacar() {
+    if (vitoriasX > quantidadeDeRodadas / 2) {
+        existeGanhadorRodada = true
+
         setTimeout(() => {
             alert("X venceu")
         }, "200");
-    } else {
-        vitoriasO++
-        document.getElementById("vitoriasO").innerHTML = vitoriasO
+
+        setTimeout(() => {
+            document.getElementById("menu").classList.remove("esconder")
+            document.getElementById("jogo").classList.add("esconder")
+            reiniciarJogo()
+        }, "500");
+
+    } else if (vitoriasO > quantidadeDeRodadas / 2) {
+        existeGanhadorRodada = true
+
         setTimeout(() => {
             alert("O venceu")
         }, "200");
+
+        setTimeout(() => {
+            alert("O venceu")
+            document.getElementById("menu").classList.remove("esconder")
+            document.getElementById("jogo").classList.add("esconder")
+            reiniciarJogo()
+        }, "500");
     }
 
-    setTimeout(() => {
-        limpaTabuleiro()
-    }, "1500");
+
 }
 
 // limpa o tabuleiro 
@@ -193,3 +232,44 @@ function limpaTabuleiro() {
     }
     existeGanhador = false
 }
+
+// Volta todas as variaveis pro seu valor padrão
+function reiniciarJogo() {
+    existeGanhador = false
+    existeGanhadorRodada = false
+    rodadaAtual = 1
+    vitoriasO = 0
+    vitoriasX = 0
+    document.getElementById("vitoriasO").innerHTML = vitoriasO
+    document.getElementById("vitoriasX").innerHTML = vitoriasX
+    mudaJogadorAtual()
+}
+
+// Adiciona e remove a classe ativo dos botões
+function melhorDe3() {
+    document.getElementById("melhor3").classList.add("ativo")
+    document.getElementById("melhor5").classList.remove("ativo")
+    document.getElementById("melhor9").classList.remove("ativo")
+} function melhorDe5() {
+    document.getElementById("melhor3").classList.remove("ativo")
+    document.getElementById("melhor5").classList.add("ativo")
+    document.getElementById("melhor9").classList.remove("ativo")
+} function melhorDe9() {
+    document.getElementById("melhor3").classList.remove("ativo")
+    document.getElementById("melhor5").classList.remove("ativo")
+    document.getElementById("melhor9").classList.add("ativo")
+}
+
+// Descobre qual botão está ativo e passa o valor dele para a variavel quantidadeDeRodadas
+function quantidadeRodadasEscolhido() {
+    if (document.getElementById("melhor3").classList.contains("ativo") == true) {
+        quantidadeDeRodadas = 3
+    }
+    if (document.getElementById("melhor5").classList.contains("ativo") == true) {
+        quantidadeDeRodadas = 5
+    }
+    if (document.getElementById("melhor9").classList.contains("ativo") == true) {
+        quantidadeDeRodadas = 9
+    }
+}
+
