@@ -1,11 +1,123 @@
 * {
-    text-align: center;
+    padding: 0;
+    margin: 0;
+
+    text-decoration: none;
 }
 
 .esconder {
-    display: none;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
+.ativo{
+    background-color: blueviolet;
+}
+
+
+
+main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*                  Página inial                    */
+.main-page{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #daf8f8;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.main-page h1{
+    font-size: 3em;
+}
+
+/*                  Numero de rodadas                    */
+.escolher-rodadas-opções{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0px;
+}
+
+.escolher-rodadas h2{
+    font-size: 1.4em;
+}
+
+.escolher-rodadas-opções button{
+    width: 34%;
+    border: none;
+    padding: 10px 0px 10px 0px;
+}
+
+.escolher-rodadas-opções button:hover{
+    background-color: blueviolet;
+}
+
+
+/*                  Escolher Dificuldade                    */
+.escolher-dificuldade-opções{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0px;
+}
+
+.escolher-dificuldade h2{
+    font-size: 1.4em;
+}
+
+.escolher-dificuldade-opções button{
+    width: 34%;
+    border: none;
+    padding: 10px 0px 10px 0px;
+}
+
+.escolher-dificuldade-opções button:hover{
+    background-color: blueviolet;
+}
+
+.escolher-dificuldade p{
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/*                  botão de começar                    */
+.botão-jogar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botão-jogar button{
+    width: 30vmin;
+    border: none;
+    padding: 10px 0px 10px 0px;
+}
+
+.botão-jogar button:hover{
+    background-color: blueviolet;
+}
+
+
+
+/*                  Página do jogo                    */
+
+
+/*                  Area do jogo                    */
 .quadrado {
     background-color: #f2f2e9;
     color: black;

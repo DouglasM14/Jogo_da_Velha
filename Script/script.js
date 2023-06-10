@@ -1,10 +1,14 @@
 var jogador = null;
+
 var existeGanhador = false
 var existeGanhadorRodada = false
-var rodadaAtual = 1
+
 var quantidadeDeRodadas = 0
+var rodadaAtual = 1
 var vitoriasX = 0
 var vitoriasO = 0
+
+var tempoJogada = 30
 
 function jogar() {
     document.getElementById("menu").classList.add("esconder")
@@ -245,7 +249,7 @@ function reiniciarJogo() {
     mudaJogadorAtual()
 }
 
-// Adiciona e remove a classe ativo dos botões
+// Adiciona e remove a classe ativo dos botões "melhor de"
 function melhorDe3() {
     document.getElementById("melhor3").classList.add("ativo")
     document.getElementById("melhor5").classList.remove("ativo")
@@ -270,6 +274,37 @@ function quantidadeRodadasEscolhido() {
     }
     if (document.getElementById("melhor9").classList.contains("ativo") == true) {
         quantidadeDeRodadas = 9
+    }
+}
+
+// Adiciona e remove a classe ativo dos botões de dificuldade
+function dificuldadeFacil() {
+    document.getElementById("facil").classList.add("ativo")
+    document.getElementById("medio").classList.remove("ativo")
+    document.getElementById("dificil").classList.remove("ativo")
+    document.getElementById("quantidadeTempo").innerHTML = "20s"
+} function dificuldadeMedio() {
+    document.getElementById("facil").classList.remove("ativo")
+    document.getElementById("medio").classList.add("ativo")
+    document.getElementById("dificil").classList.remove("ativo")
+    document.getElementById("quantidadeTempo").innerHTML = "10s"
+} function dificuldadeDificil() {
+    document.getElementById("facil").classList.remove("ativo")
+    document.getElementById("medio").classList.remove("ativo")
+    document.getElementById("dificil").classList.add("ativo")
+    document.getElementById("quantidadeTempo").innerHTML = "5s"
+}
+
+// Descobre qual botão está ativo e passa o valor dele para a variavel tempoJogada
+function dificuldadeEscolhida(){
+    if (document.getElementById("facil").classList.contains("ativo") == true) {
+        tempoJogada = 20
+    }
+    if (document.getElementById("medio").classList.contains("ativo") == true) {
+        tempoJogada = 10
+    }
+    if (document.getElementById("dificil").classList.contains("ativo") == true) {
+        tempoJogada = 5
     }
 }
 
