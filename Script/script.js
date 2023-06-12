@@ -8,14 +8,17 @@ var rodadaAtual = 1
 var vitoriasX = 0
 var vitoriasO = 0
 
-var tempoJogada = 30
+var tempoJogada = 0
+var tempo = null
 
 function jogar() {
     document.getElementById("menu").classList.add("esconder")
     document.getElementById("jogo").classList.remove("esconder")
 
     quantidadeRodadasEscolhido()
+    dificuldadeEscolhida()
 
+    iniciarTemporizador()
 
     escolherJogador();
     mudaJogadorAtual();
@@ -60,8 +63,14 @@ function quadradoEscolhido(id) {
     // Muda o jogador atual
     if (jogador === 'X') {
         jogador = "O";
+        clearInterval(tempo)
+        dificuldadeEscolhida()
+        iniciarTemporizador()
     } else {
         jogador = "X";
+        clearInterval(tempo)
+        dificuldadeEscolhida()
+        iniciarTemporizador()
     }
 
     mudaJogadorAtual()
@@ -182,7 +191,7 @@ function decidirVencedor(q) {
 
     } else {
         vitoriasO++
-        rodadaAtual++    
+        rodadaAtual++
         document.getElementById("vitoriasO").innerHTML = vitoriasO
     }
 
@@ -217,7 +226,6 @@ function verificaPlacar() {
         }, "200");
 
         setTimeout(() => {
-            alert("O venceu")
             document.getElementById("menu").classList.remove("esconder")
             document.getElementById("jogo").classList.add("esconder")
             reiniciarJogo()
@@ -242,10 +250,12 @@ function reiniciarJogo() {
     existeGanhador = false
     existeGanhadorRodada = false
     rodadaAtual = 1
+    tempoJogada = 0
     vitoriasO = 0
     vitoriasX = 0
     document.getElementById("vitoriasO").innerHTML = vitoriasO
     document.getElementById("vitoriasX").innerHTML = vitoriasX
+    clearInterval(tempo)
     mudaJogadorAtual()
 }
 
@@ -296,7 +306,7 @@ function dificuldadeFacil() {
 }
 
 // Descobre qual botão está ativo e passa o valor dele para a variavel tempoJogada
-function dificuldadeEscolhida(){
+function dificuldadeEscolhida() {
     if (document.getElementById("facil").classList.contains("ativo") == true) {
         tempoJogada = 20
     }
@@ -306,5 +316,30 @@ function dificuldadeEscolhida(){
     if (document.getElementById("dificil").classList.contains("ativo") == true) {
         tempoJogada = 5
     }
+    document.getElementById("tempoRestante").innerHTML = tempoJogada
 }
 
+
+function iniciarTemporizador() {
+    tempo = setInterval(verificarTempo, 1000)
+}
+
+function verificarTempo() {
+    tempoJogada--
+    document.getElementById("tempoRestante").innerHTML = tempoJogada
+    if (tempoJogada == 0) {
+        console.log("perdeu")
+        if (jogador === 'X') {
+            jogador = "O";
+            clearInterval(tempo)
+            dificuldadeEscolhida()
+            iniciarTemporizador()
+        } else {
+            jogador = "X";
+            clearInterval(tempo)
+            dificuldadeEscolhida()
+            iniciarTemporizador()
+        }
+        mudaJogadorAtual()
+    }
+}
