@@ -16,7 +16,7 @@
         <section id="menu" class="main-page">
 
             <div class="main-page-titulo">
-                <h1>Jogo da Velha de Cria</h1>
+                <h1>Jogo da Velha</h1>
             </div>
 
             <div class="escolher-rodadas">
@@ -31,9 +31,9 @@
             <div class="escolher-dificuldade">
                 <h2>Escolha a dificuldade:</h2>
                 <div class="escolher-dificuldade-opções">
-                    <button id="facil"  onclick="dificuldadeFacil()">Fácil</button>
+                    <button id="facil" class="ativo" onclick="dificuldadeFacil()">Fácil</button>
                     <button id="medio" onclick="dificuldadeMedio()">Médio</button>
-                    <button id="dificil" class="ativo" onclick="dificuldadeDificil()">Difícil</button>
+                    <button id="dificil" onclick="dificuldadeDificil()">Difícil</button>
                 </div>
                 <p>O tempo para cada jogador jogar vai ser de <span id="quantidadeTempo">20s</span></p>
             </div>
@@ -58,31 +58,31 @@
 
             <div class="placar">
                 <div>
-                    <p>X: <span id="vitoriasX"></span></p>
+                    <p id="vicX">X: <span id="vitoriasX"></span></p>
                 </div>
                 <div>
-                    <p>O: <span id="vitoriasO"></span></p>
+                    <p id="vicO">O: <span id="vitoriasO"></span></p>
                 </div>
             </div>
 
             <div class="tabuleiro">
 
                 <div class="tabuleiro-linha">
-                    <div id="1" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
-                    <div id="2" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
-                    <div id="3" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                    <div id="1" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
+                    <div id="2" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
+                    <div id="3" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
                 </div>
 
                 <div class="tabuleiro-linha">
-                    <div id="4" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
-                    <div id="5" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
-                    <div id="6" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                    <div id="4" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
+                    <div id="5" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
+                    <div id="6" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
                 </div>
 
                 <div class="tabuleiro-linha">
-                    <div id="7" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
-                    <div id="8" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
-                    <div id="9" class="quadrado" onclick="quadradoEscolhido(this.id)">-</div>
+                    <div id="7" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
+                    <div id="8" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
+                    <div id="9" class="quadrado" onclick="quadradoEscolhido(this.id)">⠀</div>
                 </div>
 
             </div>

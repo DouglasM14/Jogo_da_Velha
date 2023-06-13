@@ -37,7 +37,13 @@ function escolherJogador() {
 
 // Escreve no tela de quem é a vez de jogar
 function mudaJogadorAtual() {
-    document.getElementById("jogadorAtual").innerHTML = jogador
+    let jogadorAtual = document.getElementById("jogadorAtual")
+    jogadorAtual.innerHTML = jogador
+    if (jogador == "X") {
+        jogadorAtual.style.color = '#FF0000';
+    } else {
+        jogadorAtual.style.color = '#6284FF';
+    }
 }
 
 // Muda o quadrado pra X ou O
@@ -47,30 +53,27 @@ function quadradoEscolhido(id) {
         return
     }
 
-    if (jogador == null) {
-        return
-    }
-
     // Verifica se o quadrado ja está ocupado
     let quadrado = document.getElementById(id);
-    if (quadrado.innerHTML !== '-') {
+    if (quadrado.innerHTML !== '⠀') {
         return
     }
 
-    // Escreve no quadrado X ou O
-    quadrado.innerHTML = jogador
-
-    // Muda o jogador atual
+    // Escreve no quadrado X ou O e muda o jogador atual
     if (jogador === 'X') {
+        quadrado.innerHTML = jogador
+        quadrado.style.color = '#FF0000';
+        clearInterval(tempo)
+        dificuldadeEscolhida()
+        iniciarTemporizador()
         jogador = "O";
-        clearInterval(tempo)
-        dificuldadeEscolhida()
-        iniciarTemporizador()
     } else {
-        jogador = "X";
+        quadrado.innerHTML = jogador
+        quadrado.style.color = '#6284FF';
         clearInterval(tempo)
         dificuldadeEscolhida()
         iniciarTemporizador()
+        jogador = "X";
     }
 
     mudaJogadorAtual()
@@ -150,12 +153,16 @@ function checarEmpate() {
 
     for (i = 1; i <= 9; i++) {
         let q = document.getElementById(i)
-        if (q.innerHTML !== "-") {
+        if (q.innerHTML !== "⠀") {
             quadradoCheio++
         }
     }
 
     if (quadradoCheio == 9 && existeGanhador == false) {
+        for (var j = 1; j <= 9; j++) {
+            let q = document.getElementById(j)
+            q.style.backgroundColor = '#c7d2ce';
+        }
         setTimeout(() => {
             limpaTabuleiro()
         }, "1000");
@@ -168,16 +175,16 @@ function checarEmpate() {
 
 // Testa se os valores são iguais
 function checarSequencia(x, y, z) {
-    if (x.innerHTML !== "-" && x.innerHTML === y.innerHTML && y.innerHTML === z.innerHTML) {
+    if (x.innerHTML !== "⠀" && x.innerHTML === y.innerHTML && y.innerHTML === z.innerHTML) {
         return true
     }
 }
 
 // Muda a cor dos quadrados
 function mudarCor(x, y, z) {
-    x.style.backgroundColor = '#0F0'
-    y.style.backgroundColor = '#0F0'
-    z.style.backgroundColor = '#0F0'
+    x.style.backgroundColor = '#8ef5a6'
+    y.style.backgroundColor = '#8ef5a6'
+    z.style.backgroundColor = '#8ef5a6'
 }
 
 // Decide o vencedor da partida atual e muda o placar
@@ -239,8 +246,8 @@ function verificaPlacar() {
 function limpaTabuleiro() {
     for (i = 1; i <= 9; i++) {
         let q = document.getElementById(i)
-        q.innerHTML = "-"
-        q.style.backgroundColor = '#eee';
+        q.innerHTML = "⠀"
+        q.style.backgroundColor = 'white'
     }
     existeGanhador = false
 }

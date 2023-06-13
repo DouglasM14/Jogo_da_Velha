@@ -17,18 +17,17 @@
     width: 1px;
 }
 
-.ativo{
-    background-color: blueviolet;
+.ativo {
+    font-weight: bold;
+    background-color: #8EC5FC;
 }
 
-body{
-    /* background-image: url("../imagens/fundo.png"); */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
+body {
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
 
-main{
+main {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -39,123 +38,157 @@ main{
 
 
 /*                  Página inial                    */
-.main-page{
+.main-page {
+    height: 70vh;
+    width: 70vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.669);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 30px;
+    margin: 10px;
 }
 
-.main-page h1{
-    font-size: 3em;
+.main-page h1 {
+    font-size: 4rem;
+    text-align: center;
+    font-style: oblique;
 }
 
 /*                  Numero de rodadas                    */
-.escolher-rodadas-opções{
+.escolher-rodadas-opções {
     display: flex;
     justify-content: space-around;
     padding: 5px 0px;
 }
 
-.escolher-rodadas h2{
-    font-size: 1.4em;
+.escolher-rodadas h2 {
+    font-size: 1.6rem;
 }
 
-.escolher-rodadas-opções button{
+.escolher-rodadas-opções button {
+    font-size: 1.2rem;
     width: 34%;
     border: none;
-    padding: 10px 0px 10px 0px;
+    padding: 15px 0px 15px 0px;
 }
 
-.escolher-rodadas-opções button:hover{
-    background-color: blueviolet;
+.escolher-rodadas-opções button:hover {
+    font-weight: bold;
+    color: white;
+    background-color: #8EC5FC;
 }
 
 
 /*                  Escolher Dificuldade                    */
-.escolher-dificuldade-opções{
+.escolher-dificuldade-opções {
     display: flex;
     justify-content: space-around;
     padding: 5px 0px;
 }
 
-.escolher-dificuldade h2{
-    font-size: 1.4em;
+.escolher-dificuldade h2 {
+    font-size: 1.6em;
 }
 
-.escolher-dificuldade-opções button{
+.escolher-dificuldade-opções button {
+    font-size: 1.2rem;
     width: 34%;
     border: none;
-    padding: 10px 0px 10px 0px;
+    padding: 15px 0px 15px 0px;
 }
 
-.escolher-dificuldade-opções button:hover{
-    background-color: blueviolet;
+.escolher-dificuldade-opções button:hover {
+    color: white;
+    font-weight: bold;
+    background-color: #8EC5FC;
 }
 
-.escolher-dificuldade p{
+.escolher-dificuldade p {
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1.3rem;
 }
 
 /*                  botão de começar                    */
-.botão-jogar{
+.botão-jogar {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.botão-jogar button{
-    width: 30vmin;
+.botão-jogar button {
+    font-size: 1.4rem;
+    background-color: #6eb3f8;
+    border-radius: 15px;
+    width: 34%;
     border: none;
-    padding: 10px 0px 10px 0px;
+    font-weight: bold;
+    padding: 20px 0px 20px 0px;
 }
 
-.botão-jogar button:hover{
-    background-color: blueviolet;
+.botão-jogar button:hover {
+    color: white;
+    background-color: #54a5f6;
 }
 
 
 
 /*                  Página do jogo                    */
-.jogo-page{
+.jogo-page {
     display: flex;
     flex-direction: column;
 }
 
-.jogo-page-titulo h2{
+.jogo-page-titulo h2 {
     text-align: center;
-    font-size: 2.3rem;
+    font-size: 3rem;
     padding: 15px;
 }
 
-.tempo{
+.tempo {
     display: flex;
     justify-content: space-between;
     padding: 10px 0px 10px 0px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
-.placar{
+.placar {
     display: flex;
     justify-content: space-between;
     font-size: 1.3rem;
-    
+
 }
 
-.placar div{
+.placar div {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
-    padding: 5px;
+    background-color: #e0ebf7;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#vicX,
+#vitoriasX {
+    color: #FF0000;
+}
+
+#vicO,
+#vitoriasO {
+    color: #6284FF;
 }
 
 
-.tabuleiro-linha{
+.placar span {
+    color: black;
+}
+
+
+.tabuleiro-linha {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -164,7 +197,7 @@ main{
     margin: 5px 0 5px 0;
 }
 
-.tabuleiro-linha div{
+.tabuleiro-linha div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,11 +205,16 @@ main{
 
 /*                  Area do jogo                    */
 .quadrado {
-    background-color: #fafaf7;
+    background-color: white;
     color: black;
     display: inline-block;
     width: 20vmin;
     height: 20vmin;
     font-size: 60px;
     cursor: pointer;
+}
+
+#tempoRestante{
+    font-weight: bold;
+    color: #fdfd96;
 }
